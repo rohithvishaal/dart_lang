@@ -2,14 +2,10 @@ import 'dart:io';
 import 'dart:math';
 
 bool take_input = false;
-enum Weather {
-  sunny, 
-  snowy, 
-  cloudy, 
-  rainy
-}
-void main(){
 
+enum Weather { sunny, snowy, cloudy, rainy }
+
+void main() {
   // Define variable types
   String name = "Neo";
   String address = "Chicago";
@@ -93,10 +89,7 @@ void main(){
   print(weekday);
 
   // Maps
-  Map<String, String> details = {
-    "name" : "Neo",
-    "address" : "Matrix"
-  };
+  Map<String, String> details = {"name": "Neo", "address": "Matrix"};
   print(details);
 
   // var automatically finds a data type for you
@@ -111,7 +104,7 @@ void main(){
   print(value.runes);
 
   // Checking the run time type
-  var dictionary = {"A":"Apple", "B":"Ball"};
+  var dictionary = {"A": "Apple", "B": "Ball"};
   print(dictionary);
   print(dictionary.runtimeType);
   print(dictionary is Map); // Nice warning : shows if it is always true
@@ -128,9 +121,11 @@ void main(){
 
   // Example for dynamically typed
   dynamic dynamic_var = 50;
-  print("Current value of the dynamic var : $dynamic_var, Data Type : ${dynamic_var.runtimeType}");
+  print(
+      "Current value of the dynamic var : $dynamic_var, Data Type : ${dynamic_var.runtimeType}");
   dynamic_var = "Hello";
-  print("new value of the dynamic var : $dynamic_var, Data Type : ${dynamic_var.runtimeType}");
+  print(
+      "new value of the dynamic var : $dynamic_var, Data Type : ${dynamic_var.runtimeType}");
 
   // This is a single line comment
   /*
@@ -139,7 +134,6 @@ void main(){
 
   /// This is a documentation comment
   // Check the documenation_sample.dart for an example on how to generate
-
 
   // Operators in dart
   int number1 = 10;
@@ -151,7 +145,7 @@ void main(){
   int mul = number1 * number2;
   double div = number2 / number1;
   int div2 = number2 ~/ number1; // Integer division: this is new to me
-  int mod = number2%number1;
+  int mod = number2 % number1;
 
   print("The addition is $total_sum");
   print("The Subtraction is $diff");
@@ -197,16 +191,16 @@ void main(){
   int some_age = 10;
 
   print(some_string is String);
-  print(some_age is !int);
+  print(some_age is! int);
 
   // User input
-  if(take_input){
+  if (take_input) {
     String? some_name = stdin.readLineSync();
     print("you have entered $some_name");
 
     // Integer user input
     int? some_number = int.parse(stdin.readLineSync()!);
-    // ! is a null assertion operator 
+    // ! is a null assertion operator
     // The ! operator after stdin.readLineSync() tells Dart that you’re certain the result will not be null.
     print("you have entered the number: $some_number");
 
@@ -226,83 +220,175 @@ void main(){
 
 // Strings
 
-String text1 = 'This is an example of a single line string';
-String text2 = "this is an example of single line string using double quotes";
-String text3 = """This is a multiline
+  String text1 = 'This is an example of a single line string';
+  String text2 = "this is an example of single line string using double quotes";
+  String text3 = """This is a multiline
 string using the triple quotes.
 This is tutorial on dart strings
 """;
 
-String first_name = "Peter";
-String last_name = "Parker";
-print("Using +, Full name is " + first_name + " " + last_name + ".");
-print("Using interpolation, full name is $first_name $last_name.");
+  String first_name = "Peter";
+  String last_name = "Parker";
+  print("Using +, Full name is " + first_name + " " + last_name + ".");
+  print("Using interpolation, full name is $first_name $last_name.");
 
 // String properties
-String str = "Hi";
-print(str.codeUnits);
-print(str.isEmpty);
-print(str.isNotEmpty);
-print("The length of the string is : ${str.length}");
-print(str.toLowerCase());
-print(str.toUpperCase());
-print(str.trim());
-print(str.compareTo("Hello"));
-print(str.replaceAll("i", "e"));
-print(str.split(""));
-print(str.substring(1));
-print(str.codeUnitAt(0));
-print(some_age.toString());
-print("$str reverse is ${str.split("").reversed.join()}");
+  String str = "Hi";
+  print(str.codeUnits);
+  print(str.isEmpty);
+  print(str.isNotEmpty);
+  print("The length of the string is : ${str.length}");
+  print(str.toLowerCase());
+  print(str.toUpperCase());
+  print(str.trim());
+  print(str.compareTo("Hello"));
+  print(str.replaceAll("i", "e"));
+  print(str.split(""));
+  print(str.substring(1));
+  print(str.codeUnitAt(0));
+  print(some_age.toString());
+  print("$str reverse is ${str.split("").reversed.join()}");
 
 // Capitalize the first letter
-print(text1[0].toUpperCase() + text1.substring(1));
+  print(text1[0].toUpperCase() + text1.substring(1));
 
 // if else same as in java, c, javascript
 
 // asserts in dart
 // dart --enable-asserts run <file_name>.dart
-// Note: The assert(condition) method only runs in development mode. It will throw an exception only when the condition is false. 
+// Note: The assert(condition) method only runs in development mode. It will throw an exception only when the condition is false.
 //If the condition is true, nothing happens. Production code ignores it.
-assert(18 == 18);
+  assert(18 == 18);
 
 // Switch case
-switch(10){
-  case 1:
-  print("this is 1");
-  break;
-  case 2:
-  print("this is 2");
-  break;
-  default:
-  print("I don't know this");
-  break;
-}
+  switch (10) {
+    case 1:
+      print("this is 1");
+      break;
+    case 2:
+      print("this is 2");
+      break;
+    default:
+      print("I don't know this");
+      break;
+  }
 
 // switch using enum
 // declared outside the main function
 
-switch(Weather.cloudy) {
-  case Weather.sunny:
-    print("It's a sunny day");
-    break;
-  
-  case Weather.cloudy:
-    print("Keep a umbrella handy");
-    break;
-  
-  default:
-    print("I am not familiar with this weather");
-    break;
-}
+  switch (Weather.cloudy) {
+    case Weather.sunny:
+      print("It's a sunny day");
+      break;
+
+    case Weather.cloudy:
+      print("Keep a umbrella handy");
+      break;
+
+    default:
+      print("I am not familiar with this weather");
+      break;
+  }
 
 // Terenary
-print( (some_age > 18) ? "older" : "younger");
+  print((some_age > 18) ? "older" : "younger");
 
 // Loops
 // classic C style for loop
-for(int i=0; i < 3; i++){
-  print("Knock! Knock! neo!");
-}
+  for (int i = 0; i < 3; i++) {
+    print("Knock! Knock! neo!");
+  }
 
+// For each loop
+  print("Using for each loop");
+  List<String> football_players = ['ronaldo', 'messi', 'neymar', 'hazard'];
+  football_players.forEach((names) => print(names));
+
+  List<int> numbers = [1, 2, 3, 4, 5];
+  int total = 0;
+
+  numbers.forEach((num) => total = total + 1);
+  print("Total is $total.");
+
+  double avg = total / (numbers.length);
+  print("The average is $avg.");
+
+  // For in loop
+  print("Iterarting using for in loop");
+  for (String player in football_players) {
+    print(player);
+  }
+
+  // Finding index value of the list
+  print("Index value of the list");
+  football_players
+      .asMap()
+      .forEach((index, value) => print("$value index is $index"));
+  print("Getting only keys");
+  print(football_players.asMap().keys);
+  print("Getting only values");
+  print(football_players.asMap().values);
+
+  // Print unicode value of each string
+
+  String foot_baller = football_players[1];
+  for (var name in foot_baller.runes) {
+    print("Unicode of ${String.fromCharCode(name)} is $name");
+  }
+
+  // While loop
+  print("Printing 1 to 5 using while loop");
+  int i = 1;
+  while (i <= 5) {
+    print(i);
+    i += 1;
+  }
+
+  // Do While loop
+  print("printing 1 to 5 using do while loop");
+  i = 1;
+  do {
+    print(i);
+    i += 1;
+  } while (i <= 5);
+
+  // break and continue
+  print("breaking at 5");
+  for (int i = 1; i <= 10; i++) {
+    print(i);
+    if (i == 5) break;
+  }
+
+  print("Continue at 5");
+  for (int i = 1; i <= 10; i++) {
+    print(i);
+    if (i == 5) continue;
+  }
+
+  // try catch
+  print("try catch");
+  try {
+    print(1 ~/ 0);
+  } catch (ex) {
+    print(ex);
+  }
+
+  print("try catch on and finally");
+  try {
+    print(1 ~/ 0);
+  } on UnsupportedError {
+    print("unsupported error");
+  } catch (ex) {
+    print(ex);
+  } finally {
+    print("this is always executed");
+  }
+
+  // Throwing new exception
+  print("throwing custom exception");
+  try {
+    throw new Exception("some message");
+  } catch (e) {
+    print(e);
+  }
 }

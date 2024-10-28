@@ -3,6 +3,52 @@ import 'dart:math';
 
 bool take_input = false;
 
+// Functions
+void calculate_interest(double principal, double rate, double time) {
+  double interest = principal * rate * time / 100;
+  print("Simple interest is $interest");
+}
+
+// parameter and return type
+int add(int a, int b) {
+  var total;
+  total = a + b;
+  return total;
+}
+
+// parameter and no return type
+void mul_func(int a, int b) {
+  var total;
+  total = a * b;
+  print("Multiplication is : $total");
+}
+
+// no parameter and return type
+String greet() {
+  String greet = "Welcome";
+  return greet;
+}
+
+// no parameter and no return type
+void greetings() {
+  print("Hello World!!!");
+}
+
+// Optional parameter
+void print_info(String name, String geneder, [String title = "sir/ma'am"]) {
+  print("Hello $title $name your gender is $geneder");
+}
+
+// Named parameter
+void print_info_named({String? name, String? gender}) {
+  print("Hello $name your gender is $gender");
+}
+
+// required parameter
+void print_info_required({required String name, required String gender}) {
+  print("Hello $name your gender is $gender");
+}
+
 enum Weather { sunny, snowy, cloudy, rainy }
 
 void main() {
@@ -391,4 +437,57 @@ This is tutorial on dart strings
   } catch (e) {
     print(e);
   }
+
+//   Functions
+// need to follow lowerCamelCase naming convention but who gives a fuck
+// principal, rate, time are function parameters
+// 5000, 3, 3 are function arguments
+// In dart return type is automatically understood if you don't write
+  calculate_interest(5000, 3, 3);
+
+//   Different function types
+// parameter and return type
+  var total_value = add(2, 3);
+  print("Total sum: $total");
+//   parameter and no return type
+  mul_func(2, 3);
+//   no parameter and return type
+  var greeting = greet();
+  print("Greeting: $greeting");
+//   no parameter and no return type
+  greetings();
+// Providing default value on position parameter
+  print_info("John", "Male");
+  print_info("John", "Male", "Mr.");
+  print_info("Kavya", "Female", "Ms.");
+
+// named parameter - this is new to me
+  print_info_named(gender: "male", name: "john");
+  print_info_named(name: "Neo", gender: "male");
+
+// required parameter - this is new to me
+  print_info_required(name: "Rambo", gender: "Male");
+
+// Anonymous functions
+  const fruits = ["Apple", "Mango", "Banana", "Orange"];
+  fruits.forEach((fruit) {
+    print("I am selling this $fruit");
+  });
+
+  var cube = (int number) {
+    return number * number * number;
+  };
+  print("the cube of 2 is ${cube(2)}");
+  print("the cube of 3 is ${cube(3)}");
+
+// Arrow functions - short hand for single line functions
+  String super_hero_name(String name) => "Super hero $name";
+  print(super_hero_name("Neo"));
+
+// Some math functions
+// generate a list of random numbers
+  List<int> random_list = List.generate(10, (_) => Random().nextInt(100) + 1);
+  print("Some random numbers $random_list");
+// Most of the math fxn names match in this language
+// pow, min, max, sqrt e.t.c.
 }

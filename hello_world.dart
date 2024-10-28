@@ -580,4 +580,23 @@ ${manga.reversed},
 // where in list
   var even = super_numbers.where((num) => num.isEven).toList();
   print("some even numbers using where $even");
+
+// Sets
+  Set<String> set_manga = manga.toSet();
+// We have some related properties same like List
+// first, last, isEmpty, isNotEmpty, length
+  print("does it contain naruto ${set_manga.contains("Naruto")}");
+
+// Similarly we have add, remove, addAll
+
+// clear set
+  print("Clearing the set_manga : $set_manga");
+  set_manga.clear();
+  print("Cleared set : $set_manga");
+
+  Set<String> new_manga = {"blue bird", "berserk", "naruto", "HxH"};
+  print("Diff ${new_manga.difference(manga.toSet())}");
+  print("Intersection ${new_manga.intersection(manga.toSet())}");
+//   Element at
+  print("The element at : ${new_manga.elementAt(0)}");  
 }

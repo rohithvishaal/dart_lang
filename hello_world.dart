@@ -598,5 +598,63 @@ ${manga.reversed},
   print("Diff ${new_manga.difference(manga.toSet())}");
   print("Intersection ${new_manga.intersection(manga.toSet())}");
 //   Element at
-  print("The element at : ${new_manga.elementAt(0)}");  
+  print("The element at : ${new_manga.elementAt(0)}");
+
+//   Maps
+  Map<String, String> country_capital = {
+    'India': 'New delhi',
+    'Japan': 'tokyo',
+    'Russia': 'moscow'
+  };
+  print("Country and capitals: $country_capital");
+// what is the capital of Japan
+  print(country_capital['Japan']);
+// some other properties : keys, values, isEmpty, isNotEmpty, length
+  Map<String, double> expenses = {
+    'sun': 3000.0,
+    'mon': 3000.0,
+    'tue': 3234.0,
+  };
+
+  print("All keys of Map: ${expenses.keys}");
+  print("All values of Map: ${expenses.values}");
+  print("Is Map empty: ${expenses.isEmpty}");
+  print("Is Map not empty: ${expenses.isNotEmpty}");
+  print("Length of map is: ${expenses.length}");
+
+// Updating
+  expenses['sun'] = 1000;
+  print("Updated expenses : $expenses");
+
+  print("All keys of Map: ${expenses.keys}");
+  print("All values of Map: ${expenses.values}");
+
+  // With List
+  print("All keys of Map with List: ${expenses.keys.toList()}");
+  print("All values of Map with List: ${expenses.values.toList()}");
+  print("Does Map contain key sun: ${expenses.containsKey("sun")}");
+  print("Does Map contain key abc: ${expenses.containsKey("abc")}");
+
+  // For Values
+  print("Does Map contain value 3000.0: ${expenses.containsValue(3000.0)}");
+  print("Does Map contain value 100.0: ${expenses.containsValue(100.0)}");
+
+// Looping Map
+  for (var expense in expenses.entries) {
+    print(expense.key + " " + expense.value.toString());
+  }
+  print("Looping using for Each");
+  expenses.forEach(
+      (key, value) => print("the key is $key and the value is $value"));
+
+// removeWhere
+  Map<String, double> mathMarks = {
+    "ram": 30,
+    "mark": 32,
+    "harry": 88,
+    "raj": 69,
+    "john": 15,
+  };
+  mathMarks.removeWhere((key, value) => value < 32);
+  print(mathMarks);
 }

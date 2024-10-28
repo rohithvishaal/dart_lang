@@ -657,4 +657,27 @@ ${manga.reversed},
   };
   mathMarks.removeWhere((key, value) => value < 32);
   print(mathMarks);
+
+//   we can use where in list, set, map to filter specific items
+  List<int> where_numbers = [2, 4, 6, 8, 10, 11, 12, 13, 14];
+  List<int> odd_numbers = where_numbers.where((num) => num.isOdd).toList();
+  print("Using where to get odd numbers : $odd_numbers");
+
+  print("Filter days with S");
+  List<String> days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+
+  List<String> startWithS =
+      days.where((element) => element.startsWith("S")).toList();
+
+  print(startWithS);
+   mathMarks.removeWhere((key, value) => value < 32);
+   print(mathMarks);
 }

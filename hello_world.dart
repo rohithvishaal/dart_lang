@@ -490,4 +490,94 @@ This is tutorial on dart strings
   print("Some random numbers $random_list");
 // Most of the math fxn names match in this language
 // pow, min, max, sqrt e.t.c.
+
+// Collections
+// Creating a list
+  List<int> ages = [10, 30, 33];
+  List<String> games = ["ghost", "Contra", "Mario"];
+  var mixed = [10, "john", 18.8, 10];
+
+// types of list
+// Fixed length list
+  var list = List<int>.filled(5, 0);
+  print(list);
+
+// Growable list
+  var some_list = <Object>[10, 20, 30, 40, 50];
+  print("Growable list : $some_list");
+//   Access item in a list
+  print(some_list[1]);
+
+// Get index by value
+  print("index by value ${some_list.indexOf(20)}");
+
+// Find length of list
+  print("length of some list: ${some_list.length}");
+
+// Changing values of a list
+  some_list[2] = "I have changed it";
+  print("I have changed some list ${some_list}");
+
+// Mutable list
+  List<String> manga = ["Vagabond", "Naruto"];
+  print("this is some manga mutable list $manga");
+// Immuatable list
+  const List<String> formats = ["mp4", "mov"];
+  print("Some video formats in immutable list : $formats");
+// formats[1] = "you can't change shit";
+  try {
+    formats[1] = "you can't change this";
+  } catch (e) {
+    print("you tried to change an immuatable list idiot");
+    print(e);
+  }
+
+// List properties
+  String list_props = """
+${manga.first},
+${manga.last},
+${manga.isEmpty},
+${manga.isNotEmpty},
+${manga.length},
+${manga.reversed},
+""";
+  print(list_props);
+
+// if the list has only single element and returns it
+  List<String> single_element = ["1"];
+  print("returns the single element : ${single_element.single}");
+
+// Adding items to list
+  manga.add("HxH");
+  manga.addAll(["Blue period", "Dragon ball", "Noragami"]);
+  print(manga);
+// insert at specific place
+  manga.insert(3, "One piece");
+  manga.insertAll(4, ["black clover", "sakamoto desuka"]);
+  print("Insert at indexes : $manga");
+// replace range
+  manga.replaceRange(1, 2, ["Naruto Shippuden"]);
+  print("replace range: $manga");
+// similary we can remove shit
+// remove, removeAt, removeLast, removeRange
+
+// Loops in list
+  manga.forEach((manga) => print("Did you read $manga"));
+  List<int> super_numbers = [1, 2, 3, 4, 5, 6];
+  Iterable<int> nums_2 = super_numbers.map((num) => num * 2);
+  print("multiplied 2 : $nums_2");
+
+// combine two lists
+  var combined = [...super_numbers, ...manga];
+  print("Combined list : $combined");
+
+//  If conditions in list
+// become randomly sad just like irl :(
+  bool sad = Random().nextBool();
+  var cart = ['milk', 'ghee', if (sad) 'Beer'];
+  print("if conditions in list $cart");
+
+// where in list
+  var even = super_numbers.where((num) => num.isEven).toList();
+  print("some even numbers using where $even");
 }

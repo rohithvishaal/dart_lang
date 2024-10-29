@@ -849,6 +849,30 @@ The above line will not work because
  4. Private property can only be accessed from the same library
  5. It is library private not class private
 */
+
+// Short hand setters and getters
+  Encap_Vehicle encap_vehicle = Encap_Vehicle();
+  print("Short hand getters and setters");
+  encap_vehicle.model = "Tesla";
+  encap_vehicle.year = 2015;
+  print(encap_vehicle.model);
+  print(encap_vehicle.year);
+  Encap_Notes encap_notes = Encap_Notes("ClassMate", 50);
+  print(encap_notes.name + " " + encap_notes.price.toString());
+  encap_notes.name = "Lepakshi";
+  encap_notes.price = 10.0;
+  print(encap_notes.name + " " + encap_notes.price.toString());
+  print(encap_notes.custom_map);
+//   Throws exception
+//   Encap_Notes encap_notes_new = Encap_Notes("ClassMate", -1.0);
+  Encap_Notes encap_notes_new = Encap_Notes("ClassMate", 100);
+  print(encap_notes_new.price);
+//   Throws exception
+//   encap_notes_new.price = -1;
+
+/*
+    Inheritance is sharing of behaviour between two classes
+*/
 }
 
 class Animal {

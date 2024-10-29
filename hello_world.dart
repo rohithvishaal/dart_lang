@@ -1,5 +1,7 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
+import 'encap.dart';
 
 bool take_input = false;
 
@@ -759,15 +761,94 @@ ${manga.reversed},
   octopus.life_span = 5; // best case
   octopus.display();
 
+// Parameterized Constructor
   Student student = Student("Neo", 1000, 1);
   student.display();
 
+// Named constructor
   Chair chair = Chair(color: "Blue", name: "Ergo");
   chair.display();
 
+// Constructor with default values
   Table table = Table();
   print("Initializing with default values");
   table.display();
+
+// Default constructor
+  Laptop laptop = Laptop();
+
+// Named constructor
+  Mobile mobile = Mobile.custom_constructor("Apple", "Titanium Black");
+  mobile.display();
+
+//  some json stuff
+  Person person = Person("Neo", 1000);
+  Person person_json_string =
+      Person.from_json_string('{"name":"neo", "age":1000}');
+  print("From json string");
+  person_json_string.display();
+  Person person_json = Person.from_json({'name': "Neo", 'age': 1000});
+  print("From map json");
+  person_json.display();
+
+// constant constructor
+// p1 and p2 has the same hash code
+  print("Using const constructor");
+  Point p1 = const Point(0, 0);
+  print("p1 hash code : ${p1.hashCode}");
+
+  Point p2 = const Point(0, 0);
+  print("p2 hash code : ${p2.hashCode}");
+
+// without using const this has different hash code
+  print("Not using const constructor");
+  Point p3 = Point(1, 1);
+  print("p3 hash code : ${p3.hashCode}");
+  Point p4 = Point(1, 1);
+  print("p4 hash code : ${p4.hashCode}");
+
+  const Car car = Car(name: "BMW", model: "XS", price: 5000000);
+  car.display();
+
+/*
+ Encapsulation - means hiding data within a lib preventing from 
+ outside factors
+
+ What is a library in dart
+ By default every .dart file is a library
+ A library is a collection of functions and classes
+ A library can be imported into another library using the import keyword
+
+ Encapsulation can be achieved by
+    - Declaring the class properties as private by using underscore(_)
+    - providing public getter and setter methods to access and update
+        the value of a private property
+
+Note : Dart doesn't support keywords like public, private and protected
+Dart uses _ (underscore) to make a property or method private
+
+The encapsulation happens at library level, not at class level
+
+For class definitions refer encap.dart
+*/
+
+  Encap_Employee encap_employee = Encap_Employee();
+  encap_employee.set_id(1);
+  encap_employee.set_name("neo");
+  encap_employee.display();
+  encap_employee.set_id(2);
+  encap_employee.set_name("Naruto");
+  encap_employee.display();
+
+// encap_employee._id = 5;
+/*
+The above line will not work because 
+ 1. prefixing _ will make it private
+ 2. the class must be in an other file
+ 3. If the class is in the same file then we can modify
+ 4. Private property can only be accessed from the same library
+ 5. It is library private not class private
+*/
 }
 
 class Animal {
@@ -843,5 +924,79 @@ class Table {
   void display() {
     print("Name: ${this.name}");
     print("Color: ${this.color}");
+  }
+}
+
+// Default constructor
+class Laptop {
+  String? brand;
+  int? price;
+
+  Laptop() {
+    print("This is a default laptop constructor");
+  }
+}
+
+// Named constructor
+class Mobile {
+  String? name;
+  String? color;
+  int? price;
+
+  Mobile(this.name, this.color, this.price);
+
+  Mobile.custom_constructor(this.name, this.color, [this.price = 0]);
+
+  void display() {
+    print("Mobile name: ${this.name}");
+    print("Mobile color: $color");
+    print("Mobile price: $price");
+  }
+}
+
+// some json stuff
+class Person {
+  String? name;
+  int? age;
+  Person(this.name, this.age);
+
+  // A named constructor to parse from json
+  Person.from_json(Map<String, dynamic> json) {
+    name = json['name'];
+    age = json['age'];
+  }
+
+  Person.from_json_string(String json_string) {
+    Map<String, dynamic> json = jsonDecode(json_string);
+    age = json['age'];
+    name = json['name'];
+  }
+
+  void display() {
+    print("Name : $name");
+    print("Age : $age");
+  }
+}
+
+// Constant constructor
+class Point {
+  final int x;
+  final int y;
+
+  const Point(this.x, this.y);
+}
+
+// Const constructor with named parameters
+class Car {
+  final String? name;
+  final String? model;
+  final int? price;
+
+  const Car({this.name, this.model, this.price});
+
+  void display() {
+    print("Car name : $name");
+    print("Car model : $model");
+    print("Car price : $price");
   }
 }

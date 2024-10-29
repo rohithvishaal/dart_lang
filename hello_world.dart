@@ -742,4 +742,106 @@ ${manga.reversed},
   sleep(const Duration(seconds: 1));
   secret_file.deleteSync();
   print("Gone! dissappeared into thin air");
+
+// Well, Well, Well, we into OOPS now ain't we (in Butcher's voice)
+// Features of OOPS
+// Class
+// Object
+// Encapsulation
+// Inheritance
+// Polymorphism
+// Abstraction
+
+// The new keyword can be used to create a new object, but it is unnecessary.
+  Animal octopus = Animal();
+  octopus.name = "oswald";
+  octopus.number_of_legs = 8;
+  octopus.life_span = 5; // best case
+  octopus.display();
+
+  Student student = Student("Neo", 1000, 1);
+  student.display();
+
+  Chair chair = Chair(color: "Blue", name: "Ergo");
+  chair.display();
+
+  Table table = Table();
+  print("Initializing with default values");
+  table.display();
+}
+
+class Animal {
+  String? name;
+  int? number_of_legs;
+  int? life_span;
+
+  void display() {
+    print("Animal name: $name.");
+    print("Number of legs: $number_of_legs");
+    print("Life span: $life_span");
+  }
+}
+
+class Student {
+  String? name;
+  int? age;
+  int? roll_number;
+// Constructor in long form
+  Student(String name, int age, int roll_number) {
+    print("Constructor called");
+    this.name = name;
+    this.age = age;
+    this.roll_number = roll_number;
+  }
+
+// Single line constructor
+// Student(this.name, this.age, this.roll_number);
+
+  void display() {
+    print("Student name: $name");
+    print("Student age : $age");
+    print("Roll number: $roll_number");
+  }
+}
+
+class Employee {
+  String? name;
+  int? age;
+  String? position;
+  double? salary;
+
+  // Constructor with optional parameters
+  Employee(this.name, this.age, [this.position = "Base", this.salary = 0]);
+
+  void display() {
+    print("Name : ${this.name}");
+    print("Age: ${this.age}");
+    print("Position: ${this.position}");
+    print("Salary : ${this.salary}");
+  }
+}
+
+// Constructor with named parameters
+class Chair {
+  String? name;
+  String? color;
+
+  Chair({this.name, this.color});
+
+  void display() {
+    print("Name: ${this.name}");
+    print("Color: ${this.color}");
+  }
+}
+
+// Constructor with default values
+class Table {
+  String? name;
+  String? color;
+
+  Table({this.color = "White", this.name = "Sofa chair"});
+  void display() {
+    print("Name: ${this.name}");
+    print("Color: ${this.color}");
+  }
 }

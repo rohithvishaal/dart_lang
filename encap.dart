@@ -54,3 +54,53 @@ class Encap_Employee {
     print("Current salary: ${_salary}");
   }
 }
+
+class Encap_Vehicle {
+  String? _model;
+  int? _year;
+
+  // Getter method
+  String get model => _model!;
+
+  // Setter method
+  set model(String model) => _model = model;
+
+  // Getter
+  int get year => _year!;
+
+  // setter
+  set year(int year) => _year = year;
+}
+
+class Encap_Notes {
+  String? _name;
+  double? _price;
+
+  Encap_Notes(String name, double price) {
+    this._name = name;
+    if (price > 0)
+      this._price = price;
+    else
+      throw Exception("Price cannot be zero or negative");
+  }
+
+  set name(String name) => _name = name;
+  set price(double price) {
+    if (price < 0) throw Exception("Price cannot be less than 0");
+    this._price = price;
+  }
+
+  // Getter with data validation
+  String get name {
+    if (_name == "") return "No Name";
+
+    return this._name!;
+  }
+
+  double get price => this._price!;
+
+  // Map Getter
+  Map<String, dynamic> get custom_map {
+    return {"Name": this._name!, "price": this._price!};
+  }
+}

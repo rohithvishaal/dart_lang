@@ -678,6 +678,68 @@ ${manga.reversed},
       days.where((element) => element.startsWith("S")).toList();
 
   print(startWithS);
-   mathMarks.removeWhere((key, value) => value < 32);
-   print(mathMarks);
+  mathMarks.removeWhere((key, value) => value < 32);
+  print(mathMarks);
+
+// File handling
+// Reading file
+  File file = File("matrix.txt");
+  String contents = file.readAsStringSync();
+  print(contents);
+// Get File info
+  print("File path ${file.path}");
+  print("File absolute path ${file.absolute.path}");
+  print("File size ${file.lengthSync() / 1024}");
+  print("Last modified: ${file.lastModifiedSync()}");
+
+// Reading a CSV file
+  File csv_file = File("sample.csv");
+  String csv_content = csv_file.readAsStringSync();
+  print(csv_content);
+// Splitting them into lines
+  List<String> lines = csv_content.split("\n");
+  print('---------------------');
+  for (String line in lines) {
+    print(line);
+  }
+
+// Read only a part of the file
+  String some_lines = csv_content.substring(0, csv_content.indexOf("\n"));
+  print("Reading only 1st line " + some_lines);
+
+// Write file
+  File write_file = File("dodge_bullets.txt");
+  write_file.writeAsStringSync(
+      "Neo: What are you trying to tell me? That I can dodge bullets?");
+  print("data written into ${write_file.path}");
+
+// append to fle
+  write_file.writeAsString(
+      "\nMorpheus: No, Neo. I'm trying to tell you that when you're ready, you won't have to.",
+      mode: FileMode.append);
+  print("appended text into ${write_file.path}");
+
+// Writing a csv
+  if (take_input) {
+    File csv_writer = File("manga.csv");
+    csv_writer.writeAsStringSync("Name, Character\n");
+
+    for (int i = 0; i < 3; i++) {
+      stdout.write("Enter name of the manga ${i + 1}:");
+      String? manga_name = stdin.readLineSync();
+      stdout.write("Enter the name of the character ${i + 1}:");
+      String? manga_character = stdin.readLineSync();
+      csv_writer.writeAsStringSync('$manga_name,$manga_character\n',
+          mode: FileMode.append);
+    }
+  }
+
+// Delete a file
+  print("creating secrets.txt");
+  File("secrets.txt").createSync(recursive: false);
+  File secret_file = File("secrets.txt");
+  print("waiting for one second for you to observe");
+  sleep(const Duration(seconds: 1));
+  secret_file.deleteSync();
+  print("Gone! dissappeared into thin air");
 }

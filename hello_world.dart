@@ -4,6 +4,7 @@ import 'encap.dart';
 import 'inheritance.dart' as inherit;
 import 'polymorph.dart' as polymorph;
 import 'classes.dart';
+import 'abstract.dart' as abstract_c;
 
 bool take_input = false;
 
@@ -962,4 +963,16 @@ The above line will not work because
   // Enhanced Enum
   CompanyType partnership = CompanyType.partnership;
   print(partnership.text);
+
+  // Abstraction
+  // Check abstract.dart for class implementation
+  abstract_c.SBI sbi = abstract_c.SBI("SBI", 8.5);
+  sbi.display();
+  sbi.interest();
+  abstract_c.ICICI icici = abstract_c.ICICI("ICICI", 9);
+  icici.display();
+  icici.interest();
+
+  // Interfaces
+  // refer interface.dart for interface class implementations
 }

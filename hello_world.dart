@@ -975,4 +975,7 @@ The above line will not work because
 
   // Interfaces
   // refer interface.dart for interface class implementations
+
+  // Mixins
+  // refer mixin.dart for mixin implementations
 }

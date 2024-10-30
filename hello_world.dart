@@ -3,7 +3,7 @@ import 'dart:io';
 import 'dart:math';
 import 'encap.dart';
 import 'inheritance.dart' as inherit;
-import 'ploymorph.dart' as ploymorph;
+import 'polymorph.dart' as polymorph;
 import 'classes.dart';
 
 bool take_input = false;
@@ -927,4 +927,9 @@ The above line will not work because
   inherit.Apple apple = inherit.Apple("iPhone 15", "Titanium Black", "AI");
   apple.display();
 
+  // Polymorphism
+  // check the polymorph.dart for class implementations
+  print("Overriding Animal eat() method");
+  polymorph.Dog poly_dog = polymorph.Dog();
+  poly_dog.eat();
 }

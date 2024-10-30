@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'encap.dart';
@@ -40,8 +39,8 @@ void greetings() {
 }
 
 // Optional parameter
-void print_info(String name, String geneder, [String title = "sir/ma'am"]) {
-  print("Hello $title $name your gender is $geneder");
+void print_info(String name, String gender, [String title = "sir/ma'am"]) {
+  print("Hello $title $name your gender is $gender");
 }
 
 // Named parameter
@@ -55,6 +54,18 @@ void print_info_required({required String name, required String gender}) {
 }
 
 enum Weather { sunny, snowy, cloudy, rainy }
+
+enum Days { Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday }
+
+// enhanced enum
+enum CompanyType {
+  partnership("Nvidia"),
+  corporation("Google");
+
+  // Members
+  final String text;
+  const CompanyType(this.text);
+}
 
 void main() {
   // Define variable types
@@ -940,4 +951,15 @@ The above line will not work because
   // Static method
   print("Simple interest using static method");
   print(SimpleInterest.calc_si(1000, 2, 2));
+
+  // Enums
+  // declared outside the function, as they should be
+  // enum Days { Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday}
+  for (var day in Days.values) {
+    print(day);
+  }
+
+  // Enhanced Enum
+  CompanyType partnership = CompanyType.partnership;
+  print(partnership.text);
 }

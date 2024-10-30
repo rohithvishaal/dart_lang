@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'encap.dart';
+import 'inheritance.dart' as inherit;
 
 bool take_input = false;
 
@@ -871,8 +872,57 @@ The above line will not work because
 //   encap_notes_new.price = -1;
 
 /*
-    Inheritance is sharing of behaviour between two classes
+    Inheritance is sharing of behaviour between two classes 
+    extend keyword is used for inheriting from parent class
+
+    Whenever you use inheritance, It always creates a is-a relation
+    between parent and child like
+    Student is-a Person
+    Truck is-a Vehicle
+    Cow is-a Animal
+
+    Dart supports only single inheritance no multiple inheritance
+
+    Parent Class: The class whose properties and methods are inherited by
+    another class. It is also called as base class or super class
+    Child Class: the class that inherits the properties and methods of another 
+    class. It is also called as derived class or sub class
 */
+// Check the inheritance.dart for inheritance related classes
+  print("Single inheritance");
+  var inherit_student = inherit.Student();
+  inherit_student.name = "Nara Shikamaru";
+  inherit_student.age = 18;
+  inherit_student.school_name = "Konoha Ninja School";
+  inherit_student.school_address = "Konoha Hidden Leaf";
+  inherit_student.display();
+  inherit_student.display_school_info();
+
+  print("Multilevel inheritance");
+  inherit.Model3 model3 = inherit.Model3();
+  model3.name = "Tesla Model 3";
+  model3.price = 50000.0;
+  model3.color = "Red";
+  model3.display();
+
+  print("Hierarchical inheritance");
+  inherit.Triangle triangle = inherit.Triangle();
+  triangle.diameter1 = 10;
+  triangle.diameter2 = 12;
+  print("Triangle Area " + triangle.area().toString());
+
+  inherit.Rectangle rectangle = inherit.Rectangle();
+  rectangle.diameter1 = 2;
+  rectangle.diameter2 = 2;
+  print("Rectangle Area: ${rectangle.area()}");
+
+  // Constructor Inheritance
+  print("parent constructor and child constructor is called");
+  inherit.Macbook macbook = inherit.Macbook();
+
+  // Constructor Inheritance with parameters
+  inherit.Apple apple = inherit.Apple("iPhone 15", "Titanium Black", "AI");
+  apple.display();
 }
 
 class Animal {

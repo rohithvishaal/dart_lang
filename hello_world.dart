@@ -932,4 +932,12 @@ The above line will not work because
   print("Overriding Animal eat() method");
   polymorph.Dog poly_dog = polymorph.Dog();
   poly_dog.eat();
+
+  // Static variable
+  Counter count = Counter();
+  for (int i = 0; i < 3; i++) count.get_count();
+
+  // Static method
+  print("Simple interest using static method");
+  print(SimpleInterest.calc_si(1000, 2, 2));
 }

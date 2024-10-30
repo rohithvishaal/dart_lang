@@ -1,4 +1,5 @@
- import 'dart:convert';
+import 'dart:convert';
+
 class Animal {
   String? name;
   int? number_of_legs;
@@ -146,5 +147,26 @@ class Car {
     print("Car name : $name");
     print("Car model : $model");
     print("Car price : $price");
+  }
+}
+
+// Static
+// If you want to define a variable or method that is shared by
+// all instances of a class, you can use the static keyword
+// static members are accessed using the class name
+// It is for memory management
+
+class Counter {
+  static int count = 0;
+  void get_count() {
+    count++;
+    print("Current count using static var: $count");
+  }
+}
+
+// static method
+class SimpleInterest {
+  static double calc_si(double principal, double rate, double time) {
+    return (principal * rate * time) / 100;
   }
 }

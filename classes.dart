@@ -170,3 +170,143 @@ class SimpleInterest {
     return (principal * rate * time) / 100;
   }
 }
+
+/*
+Factory Constructors
+
+All the constructors that we used above are generative constructors
+Dart also provides a special type of constructor called factory constructor
+
+A factory constructor gives more flexibility to create an object
+Generative constructors only create a instance of the class
+Factory constructors can return an instance of the class or even subclass
+It is also used to return the cached instance of the class
+
+Rules for factory constructors 
+- must return an instance of the class or sub-class
+- can't use this keyword inside factory constructor
+- It can be named or unnamed and called like normal constructor
+- It can't access instance members of the class
+*/
+
+class Area {
+  final int length;
+  final int breadth;
+  final int area;
+
+  // An initializer list allows you to assign properties to a new instance
+  // variable before the constructor body runs, but after the creation
+
+  // Private constructor
+  const Area._internal(this.length, this.breadth) : area = length * breadth;
+
+//   Factory constructor
+  factory Area(int length, int breadth) {
+    if (length < 0 || breadth < 0) {
+      throw Exception("Length and Breadth must be positive");
+    }
+    return Area._internal(length, breadth);
+  }
+}
+
+/*
+With a factory constructor you can initialize a final variable using logic
+that can't be handled in the initializer list
+*/
+class Person_Factory {
+  String first_name;
+  String last_name;
+
+  Person_Factory(this.first_name, this.last_name);
+
+  factory Person_Factory.from_map(Map<String, Object> map) {
+    final first_name = map['first_name'] as String;
+    final last_name = map['last_name'] as String;
+    return Person_Factory(first_name, last_name);
+  }
+}
+/*
+What is the difference between Named Constructor and Factory Constructor
+|---------------------------|-----------------------------------------|-----------------------------------------------------------------|
+| Aspect                    | Named Constructor                       | Factory Constructor                                             |
+|---------------------------|-----------------------------------------|-----------------------------------------------------------------|
+| **Keyword**               | Uses `ClassName.name()`                 | Uses `factory ClassName.name()`                                 |
+| **Object Creation**       | Always creates a new instance           | Can return an existing instance or a new instance               |
+| **Initialization Logic**  | Limited to standard initialization      | Can have complex logic, return subtypes, or cache instances     |
+| **Use Case**              | Multiple ways to initialize an object   | Patterns like singleton, caching, or conditional creation       |
+| **Return Type Control**   | Always returns an instance of the class | Can return different types (subclasses or existing instances)   |
+|---------------------------|-----------------------------------------|-----------------------------------------------------------------|
+*/
+
+enum ShapeType { Circle, Rectangle }
+
+abstract class Shape {
+  factory Shape(ShapeType type) {
+    switch (type) {
+      case ShapeType.Circle:
+        return Circle();
+      case ShapeType.Rectangle:
+        return Rectangle();
+      default:
+        throw 'Invalid Shape Type';
+    }
+  }
+
+//   abstract method
+  void draw();
+}
+
+class Circle implements Shape {
+  @override
+  void draw() {
+    print("Drawing a circle");
+  }
+}
+
+class Rectangle implements Shape {
+  @override
+  void draw() {
+    print("Drawing Rectangle");
+  }
+}
+
+// singleton usinfg factory constructors
+class Singleton {
+  static final Singleton _instance = Singleton._internal();
+
+  // factory constructor
+  factory Singleton() {
+    return _instance;
+  }
+
+  // private constructor
+  Singleton._internal();
+}
+
+void main() {
+  Area area = Area(10, 20);
+  print("Area is : ${area.area}");
+
+// Below area will throw an error as breadth is < 0
+//   Area area2 = Area(10, -1);
+//   print("Area of Area2 is ${area2.area}");
+  final person = Person_Factory('John', 'Doe');
+
+  // create a person object from map
+  final person2 =
+      Person_Factory.from_map({'first_name': 'Harry', 'last_name': 'Potter'});
+
+  // print first and last name
+  print("From normal constructor: ${person.first_name} ${person.last_name}");
+  print("From factory constructor: ${person2.first_name} ${person2.last_name}");
+
+// Dart’s factory constructors allow an abstract class to return instances of its subclasses.
+  Shape shape = Shape(ShapeType.Circle);
+  Shape shape2 = Shape(ShapeType.Rectangle);
+  shape.draw();
+  shape2.draw();
+
+  Singleton singleton1 = Singleton();
+  Singleton singleton2 = Singleton();
+  print("Is singleton1 and singleton2 same ? ${singleton1 == singleton2}");
+}

@@ -984,4 +984,62 @@ The above line will not work because
 
   // Generics
   // refer generics.dart
+
+/*
+Null Safety
+
+- Write Safe code
+- Reduce the chances of app crashes
+- easy to find and fix bugs in code
+
+Avoids null errors, runtime bugs, vulnerabilities and system crashes
+
+In Dart variables are non-nullable by default
+
+If you want to provide null we can use the ? operator
+*/
+
+  String? nullable_var;
+  String non_nullable_var;
+  nullable_var = null;
+// non_nullable_var = null; - this will throw an error
+
+/*
+How to use nullable variables?
+- use if statement to check if the var is null
+- use ! operator which returns null if the var is null
+- use ?? to assign a default value if the var is null
+*/
+  String? movie_name;
+  movie_name = "Matrix";
+  movie_name = null;
+  if (movie_name == null) print("movie_name is null");
+  String movie_name1 = movie_name ?? "Edge of Tomorrow";
+  print(movie_name1);
+  /*
+    movie_name!: The ! operator, also known as the null assertion operator, asserts 
+    that the value of movie_name is not null at runtime. By using movie_name!, you are telling Dart to treat movie_name 
+    as non-nullable, even if it was originally declared as nullable (String?).
+
+    If movie_name is not null, movie_name2 will be assigned that value without any issues.
+    If movie_name is null, the code will throw a runtime exception (Null check operator used on a null value), 
+    causing the program to crash.
+  */
+//   String movie_name2 = movie_name!; - this will throw an error
+//   print(movie_name2);
+
+// List of nullable ints
+List<int?> items = [1, 2, null, 4];
+print(items);
+
+// type promotion
+/*
+Dart automatically converts a value of one type to another type
+dart does this when it knows that the value is a specific type
+
+How type promotion works?
+general types -> specific subtypes
+nullable types -> non-nullable types
+
+*/
 }

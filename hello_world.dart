@@ -1029,8 +1029,8 @@ How to use nullable variables?
 //   print(movie_name2);
 
 // List of nullable ints
-List<int?> items = [1, 2, null, 4];
-print(items);
+  List<int?> items = [1, 2, null, 4];
+  print(items);
 
 // type promotion
 /*
@@ -1042,4 +1042,26 @@ general types -> specific subtypes
 nullable types -> non-nullable types
 
 */
+  Object some_name = "Neo";
+// print(some_name.length); will not work because dart doesn't know that name is string
+  if (some_name is String) print("The length of name is ${some_name.length}");
+// some_name is promoted to String
+
+// result is a string which is null if it is uninitialized
+  String result;
+// result is promoted to a non-nullable type string
+  if (DateTime.now().hour < 12)
+    result = "Good Morning";
+  else
+    result = "Good Afternoon";
+  print("Result is $result");
+  print("Length of the result is ${result.length}");
+  print_length("Hello");
+}
+
+// Promotion with nullable to non-nullable type
+// because we are covering the case of null also
+void print_length(String? text) {
+  if (text == null) throw Exception("The text is null");
+  print("Length of the text is ${text.length}");
 }

@@ -16,8 +16,6 @@ It is used to represent a potential value, or error, that will be available at s
 */
 
 // you can create a future in dart by using Future class.
-import 'dart:io';
-
 Future<String> get_user_name() async {
   // Future.value('Future Neo'); // Will return Future<String> immediately
   return Future.delayed(Duration(seconds: 1), () => 'Future Neo');

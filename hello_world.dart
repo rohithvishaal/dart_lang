@@ -1100,6 +1100,8 @@ when you access it for the first time. This is also called Lazy loading.
   random_country = "Japan";
   print("After the late call");
   print(country_name);
+
+// refer asynchronous.dart for code implementation
 }
 
 // Promotion with nullable to non-nullable type

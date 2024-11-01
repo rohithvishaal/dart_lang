@@ -1057,6 +1057,49 @@ nullable types -> non-nullable types
   print("Result is $result");
   print("Length of the result is ${result.length}");
   print_length("Hello");
+  /*
+when you put late infront of a variable declaration, you tell Dart the following
+- Don't assign that variable a value yet
+- You will asign value later
+- You will make sure the variable has a value before you use it
+
+Dart will throw an error if you use the variable before you assign it
+
+The Late keywordhas two cases:
+ - Declaring a non-nullable variable or field that is not initialized 
+    at the point of declarion
+ - Lazy Initialization of a variable or field
+
+What is Lazy initialization
+It is a design pattern that delays the creation of an object, the calculation
+of a value, or some other expensive process until the first time you need it
+
+Using late means dart doesn't initialize value right way, it only initializes
+when you access it for the first time. This is also called Lazy loading.
+*/
+  late String late_var;
+  late_var = "son";
+  print(late_var);
+  Late_Example late_example = Late_Example();
+// late var initialized here
+  late_example.name = "Neo";
+  late_example.id = "blue pill";
+//   late_example.id = "red pill"; This will throw an error because it is already initialized
+  late_example.greet();
+
+  String provide_country(String country) {
+    print("function is called");
+    return "Hello I am from $country";
+  }
+
+// the provide_country function is called only when the random_country is used
+// Lazy initialization is used to avoid unnecessary computation
+  print("Before the late call");
+  late String random_country;
+  late String country_name = provide_country(random_country);
+  random_country = "Japan";
+  print("After the late call");
+  print(country_name);
 }
 
 // Promotion with nullable to non-nullable type
@@ -1064,4 +1107,15 @@ nullable types -> non-nullable types
 void print_length(String? text) {
   if (text == null) throw Exception("The text is null");
   print("Length of the text is ${text.length}");
+}
+
+// late keyword in class
+class Late_Example {
+  late String name;
+  late final String id;
+
+  void greet() {
+    print("Hello $name, follow the white rabbit🐰");
+    print("your ID is $id, once set you can't go back");
+  }
 }
